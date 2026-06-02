@@ -1,0 +1,405 @@
+/* =========================================
+   GLOBAL RESET & FONTS
+========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body, #root {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* This strictly kills the browser scrollbar! */
+  background-color: #ffffff;
+  color: #333;
+}
+
+
+/* =========================================
+   MASTER LAYOUT (App.jsx)
+========================================= */
+.evs-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.workspace {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+
+/* =========================================
+   SIDEBAR (Sidebar.jsx)
+========================================= */
+.sidebar {
+  width: 250px;
+  background-color: #286090; /* SAN TECH Blue */
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+.dash {
+  width: 250px;
+  background-color: #286090; /* SAN TECH Blue */
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.branding {
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-nav {
+  flex-grow: 1;
+  padding: 10px 0;
+}
+
+.main-nav a {
+  display: block; /* Forces the link to stretch across the whole sidebar */
+  padding: 12px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  color: white; /* Fixes the default blue link color */
+  text-decoration: none; /* Removes the underline */
+  transition: background-color 0.2s;
+}
+
+
+.main-nav p {
+  font-size: 11px;
+  color: #a9c6de;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.main-nav ul {
+  list-style: none;
+}
+
+.main-nav li {
+  padding: 12px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+
+.main-nav li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-nav li.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-left: 4px solid #fff;
+}
+
+.main-nav a {
+  padding: 12px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.main-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-nav a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-left: 4px solid #fff;
+}
+
+.theme-toggle {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background-color: #1e4f7a;
+}
+
+.theme-toggle button {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.theme-toggle button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   HEADER (ScanningHeader.jsx)
+========================================= */
+.scanning-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-left h2 {
+  font-size: 18px;
+  color: #333;
+}
+
+.scanning-input {
+  padding: 8px 12px;
+  border: 2px solid #f39c12; /* The orange/yellow border */
+  border-radius: 4px;
+  width: 400px;
+  font-size: 16px;
+  outline: none;
+}
+
+.header-right {
+  font-size: 14px;
+  color: #666;
+}
+
+/* =========================================
+   MIDDLE SECTION (Core & Registration)
+========================================= */
+.scanning-core {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.registration-card {
+  flex: 2; /* Takes up more space than the camera */
+  display: flex;
+  gap: 20px;
+}
+
+.form-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-fields label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #555;
+}
+
+.form-fields input, 
+.form-fields select {
+  width: 65%;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.form-fields input:focus, 
+.form-fields select:focus {
+  border-color: #286090;
+}
+
+.phone-input {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.phone-input label {
+  margin-right: auto;
+}
+
+.action-buttons button,
+.avatar-section button,
+.table-controls button {
+  padding: 6px 15px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333; /* <--- ADD THIS LINE! It forces the text to be dark gray */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.action-buttons button:hover,
+.avatar-section button:hover,
+.table-controls button:hover {
+  background-color: #f0f0f0;
+}
+
+/* =========================================
+   AVATAR & CAMERA SECTION
+========================================= */
+.avatar-section {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #000; /* Black background like the screenshot */
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.document-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid #4a90e2; /* Blue border container */
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.doc-types {
+  display: flex;
+  gap: 15px;
+  font-size: 13px;
+  color: #555;
+}
+
+.doc-types label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.camera-preview-box {
+  flex-grow: 1;
+  min-height: 200px;
+  border: 1px solid #333;
+  background-color: #fff;
+}
+
+/* =========================================
+   TABLE SECTION (RecentTapsTable.jsx)
+========================================= */
+.recent-taps-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls-left button {
+  margin-right: 10px;
+}
+
+.badge-red {
+  color: red;
+  margin-left: 5px;
+}
+
+.search-input {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.table-tabs {
+  border-bottom: 1px solid #ccc;
+}
+
+.table-tabs button {
+  padding: 8px 25px;
+  background: white;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  cursor: pointer;
+  color: #555;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.table-container th, 
+.table-container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  color: #444;
+}
+
+.table-container th {
+  background-color: #fafafa;
+  font-weight: normal;
+}
+
+.table-container tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* =========================================
+   DARK MODE OVERRIDES
+========================================= */
+.theme-dark .workspace {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.theme-dark .registration-card,
+.theme-dark .document-card,
+.theme-dark .recent-taps-section {
+  background-color: #242424;
+  color: #fff;
+  border-color: #444;
+}
+
+.theme-dark .scanning-header h2,
+.theme-dark label,
+.theme-dark .form-fields label,
+.theme-dark .doc-types label,
+.theme-dark .table-tabs button {
+  color: #ccc;
+}
+
+.theme-dark .table-container th, 
+.theme-dark .table-container td {
+  color: #ddd;
+  border-color: #444;
+}
+
+.theme-dark .table-container tr:hover {
+  background-color: #333;
+}
